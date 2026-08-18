@@ -1,0 +1,314 @@
+/* styles.css */
+:root {
+    --primary-color: #3b82f6;
+    --background-color: #0a192f;
+    --text-color: #ffffff;
+    --secondary-text: #9ca3af;
+    --nav-background: rgba(31, 41, 55, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+}
+
+@media (min-width: 769px) {
+    body {
+        padding: 2rem;
+    }
+}
+
+/* Logo Styles */
+.logo {
+    position: fixed;
+    top: 4rem;
+    left: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    background-image: url("LOGO.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* Social Links */
+.social-links {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.social-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Hero Section */
+.hero {
+    max-width: 1200px;
+    margin: 6rem auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.name-line {
+    display: block;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.download-cv {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.download-cv:hover {
+    background-color: #10ce6f;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-button img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+}
+
+.social-button:hover img {
+    transform: scale(1.1);
+}
+
+/* Profile Image */
+.profile-container {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--nav-background);
+    backdrop-filter: blur(8px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    display: flex;
+    gap: 1.5rem;
+    z-index: 10;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.nav-item svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+
+    .bottom-nav {
+        padding: 0.5rem 1rem;
+        gap: 1rem;
+    }
+
+    .nav-item {
+        padding: 0.4rem;
+    }
+
+    .nav-item svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.profile-container {
+    animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+/* Añade estas variables en :root */
+:root {
+    /* Modo claro */
+    --primary-color: #3b82f6;
+    --background-color: #ffffff;
+    --text-color: #1f2937;
+    --secondary-text: #4b5563;
+    --nav-background: rgba(243, 244, 246, 0.5);
+}
+
+[data-theme="dark"] {
+    --background-color: #0a192f;
+    --text-color: #ffffff;
+    --secondary-text: #fffefe;
+    --nav-background: rgba(31, 41, 55, 0.5);
+}
+
+/* Añade esta clase al botón de tema */
+.nav-item[data-section="theme"].active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+body.light-mode {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+}
+
+body.dark-mode {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #0a091f; /* Color de fondo para modo oscuro */
+    color: #ffffff; /* Color del texto para modo oscuro */
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+        /* Otros ajustes específicos para móviles */
+    }
+}
+
+/* Media Query para dispositivos portátiles */
+@media (min-width: 769px) {
+    body {
+        padding: 2rem;
+        /* Otros ajustes específicos para portátiles */
+    }
+}
+
