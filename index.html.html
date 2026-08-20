@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julio Casado — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-base:#12161d;
+    --bg-panel:#1a1f29;
+    --bg-panel-alt:#212836;
+    --bg-elevated:#242c3b;
+    --accent:#e8a94a;
+    --accent-dim:#8a6a35;
+    --ok:#7fd99a;
+    --text-1:#eceef2;
+    --text-2:#9aa2b6;
+    --text-3:#666f85;
+    --line:#2a303e;
+    --radius:10px;
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --sans:'Manrope', system-ui, sans-serif;
+    --nav-h:58px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg-base);
+    color:var(--text-1);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body{
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--accent); color:#1a1305;}
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- TOP NAV ---------- */
+  .topnav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(18,22,29,0.86);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav-inner{
+    max-width:1240px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:14px 40px;
+  }
+  .topnav-brand{
+    font-family:var(--mono);
+    font-size:0.82rem;
+    color:var(--text-1);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+  }
+  .dotpx{width:7px; height:7px; border-radius:50%; background:var(--ok);}
+  .topnav-links{
+    display:flex;
+    gap:4px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .topnav-links::-webkit-scrollbar{display:none;}
+  .tn-link{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--text-2);
+    padding:8px 12px;
+    border-radius:7px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    white-space:nowrap;
+    border:1px solid transparent;
+  }
+  .tn-link .n{color:var(--text-3); font-size:0.72rem;}
+  .tn-link:hover{color:var(--text-1); background:var(--bg-panel);}
+  .tn-link.active{
+    color:var(--accent);
+    background:var(--bg-panel);
+    border-color:var(--line);
+  }
+  .tn-link.active .n{color:var(--accent);}
+
+  @media (max-width:860px){
+    .topnav-inner{padding:12px 20px;}
+    .topnav-brand{display:none;}
+  }
+
+  .wrap{
+    display:grid;
+    grid-template-columns: 340px 1fr;
+    max-width:1240px;
+    margin:0 auto;
+    min-height:100vh;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  aside{
+    padding:44px 32px;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    position:sticky;
+    top:var(--nav-h);
+    height:calc(100vh - var(--nav-h));
+    overflow-y:auto;
+  }
+
+  .avatar-frame{
+    width:150px;
+    height:150px;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 0 0 4px var(--bg-panel), 0 12px 30px -8px rgba(0,0,0,0.6);
+  }
+  .avatar-frame img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.01); transition:transform .35s ease;}
+  .avatar-frame:hover img{transform:scale(1.05);}
+
+  .id-block h1{
+    font-size:1.5rem;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    line-height:1.25;
+  }
+  .id-block .role{
+    margin-top:6px;
+    font-family:var(--mono);
+    font-size:0.8rem;
+    color:var(--accent);
+    letter-spacing:0.02em;
+  }
+
+  .status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    border-radius:99px;
+    background:var(--bg-panel);
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--text-2);
+    width:fit-content;
+  }
+  .status-dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--ok);
+    box-shadow:0 0 0 3px rgba(127,217,154,0.15);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 0 0 3px rgba(127,217,154,0.15);}
+    50%{ box-shadow:0 0 0 6px rgba(127,217,154,0.06);}
+  }
+
+  .sidebar-section{
+    border-top:1px solid var(--line);
+    padding-top:22px;
+  }
+  .sidebar-label{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--text-3);
+    margin-bottom:12px;
+  }
+
+  .contact-list{list-style:none; display:flex; flex-direction:column; gap:12px;}
+  .contact-list li{display:flex; align-items:flex-start; gap:10px; font-size:0.85rem;}
+  .contact-list .ico{
+    width:28px; height:28px; flex-shrink:0;
+    border-radius:7px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--accent);
+  }
+  .contact-list .ico svg{width:14px; height:14px;}
+  .contact-list a:hover{color:var(--accent);}
+  .contact-list .meta-k{color:var(--text-3); font-family:var(--mono); font-size:0.68rem; display:block;}
+
+  .tag-row{display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    padding:4px 9px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    color:var(--text-2);
+    background:var(--bg-panel);
+  }
+
+  nav.jump{display:flex; flex-direction:column; gap:4px;}
+  nav.jump a{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--text-2);
+    padding:7px 10px;
+    border-radius:7px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  nav.jump a:hover{background:var(--bg-panel); color:var(--text-1);}
+  nav.jump a .n{color:var(--accent);}
+
+  /* ---------- MAIN ---------- */
+  main{padding:44px 40px 100px; min-width:0;}
+
+  .path{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--text-3);
+    margin-bottom:28px;
+  }
+  .path span{color:var(--accent);}
+
+  /* Hero terminal */
+  .hero-term{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--bg-panel);
+    overflow:hidden;
+    margin-bottom:56px;
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:11px 14px;
+    background:var(--bg-panel-alt);
+    border-bottom:1px solid var(--line);
+  }
+  .term-dot{width:10px; height:10px; border-radius:50%;}
+  .term-bar .path-title{
+    margin-left:8px;
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--text-3);
+  }
+  .term-body{padding:26px 28px 30px; font-family:var(--mono);}
+  .term-line{color:var(--text-2); font-size:1rem; font-weight:600; margin-bottom:4px;}
+  .term-line .prompt{color:var(--ok);}
+  .term-output{
+    font-family:var(--sans);
+    font-size:1.7rem;
+    font-weight:800;
+    letter-spacing:-0.015em;
+    line-height:1.3;
+    margin:14px 0 6px;
+    min-height:1.3em;
+  }
+  .term-output .cursor{
+    display:inline-block;
+    width:3px; height:1.6rem;
+    background:var(--accent);
+    margin-left:3px;
+    transform:translateY(3px);
+    animation:blink 1s steps(1) infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  .term-sub{font-family:var(--sans); color:var(--text-2); font-size:0.95rem; max-width:52ch;}
+
+  section{margin-bottom:56px; scroll-margin-top:calc(var(--nav-h) + 24px);}
+
+  .cmd-eyebrow{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:1rem;
+    letter-spacing:-0.01em;
+    color:var(--accent);
+    margin-bottom:18px;
+  }
+  .cmd-eyebrow::before{content:'$'; color:var(--text-3); font-weight:400;}
+  .cmd-eyebrow .divider{flex:1; height:1px; background:var(--line);}
+
+  .section-title{
+    font-size:1.15rem;
+    font-weight:800;
+    margin-bottom:16px;
+    letter-spacing:-0.01em;
+  }
+
+  .prose{color:var(--text-2); font-size:0.95rem; max-width:64ch;}
+  .prose + .prose{margin-top:10px;}
+
+  .focus-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:12px;
+    margin-top:20px;
+  }
+  .focus-card{
+    border:1px solid var(--line);
+    background:var(--bg-panel);
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .focus-card .k{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .focus-card p{margin-top:8px; font-size:0.86rem; color:var(--text-2);}
+
+  /* Skills / tools badge cloud */
+  .badge-group{margin-bottom:20px;}
+  .badge-group h4{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--text-3);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:10px;
+  }
+  .badge-cloud{display:flex; flex-wrap:wrap; gap:8px;}
+  .badge{
+    font-size:0.82rem;
+    padding:7px 13px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:var(--bg-panel);
+    color:var(--text-1);
+    display:flex; align-items:center; gap:7px;
+  }
+  .badge::before{
+    content:'';
+    width:6px; height:6px;
+    border-radius:2px;
+    background:var(--accent);
+    flex-shrink:0;
+  }
+
+  /* Automation pipeline (tree) */
+  .pipeline{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:14px;
+    margin-top:20px;
+  }
+  .pipe-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--bg-panel);
+    padding:18px 20px;
+  }
+  .pipe-card .head{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.92rem;
+    color:var(--text-1);
+    margin-bottom:12px;
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--line);
+  }
+  .pipe-card .head .dot{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+  .pipe-card ul{list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .pipe-card li{
+    font-size:0.83rem;
+    color:var(--text-2);
+    padding-left:16px;
+    position:relative;
+  }
+  .pipe-card li::before{
+    content:'└';
+    position:absolute; left:0; top:-2px;
+    color:var(--text-3);
+    font-family:var(--mono);
+  }
+
+  /* Timeline (education/certs) */
+  .timeline{display:flex; flex-direction:column;}
+  .t-item{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:20px;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .t-item:first-child{padding-top:0;}
+  .t-item:last-child{border-bottom:none;}
+  .t-when{
+    font-family:var(--mono);
+    font-size:0.76rem;
+    color:var(--text-3);
+    padding-top:2px;
+  }
+  .t-what h4{font-size:0.98rem; font-weight:700;}
+  .t-what .org{font-size:0.83rem; color:var(--accent); margin-top:2px;}
+  .t-what p{font-size:0.86rem; color:var(--text-2); margin-top:8px;}
+
+  .cert-list{display:flex; flex-direction:column; gap:10px; margin-top:24px;}
+  .cert-row{
+    display:flex; align-items:center; gap:12px;
+    font-size:0.87rem;
+    color:var(--text-2);
+    padding:12px 16px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--bg-panel);
+  }
+  .cert-row .chk{color:var(--ok); font-family:var(--mono); flex-shrink:0;}
+  .cert-row strong{color:var(--text-1); font-weight:600;}
+
+  /* Goal roles */
+  .goal-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:10px;
+    margin-top:20px;
+  }
+  .goal-item{
+    font-size:0.85rem;
+    padding:14px 16px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--bg-panel);
+    color:var(--text-2);
+  }
+  .goal-item strong{display:block; color:var(--text-1); font-size:0.9rem; margin-bottom:2px;}
+
+  /* Projects empty state */
+  .empty-state{
+    border:1px dashed var(--line);
+    border-radius:var(--radius);
+    padding:40px 30px;
+    text-align:center;
+    background:var(--bg-panel);
+  }
+  .empty-state .glyph{
+    font-family:var(--mono);
+    color:var(--text-3);
+    font-size:0.8rem;
+    margin-bottom:14px;
+  }
+  .empty-state h4{font-size:1rem; margin-bottom:8px;}
+  .empty-state p{font-size:0.86rem; color:var(--text-2); max-width:44ch; margin:0 auto;}
+
+  /* Contact */
+  .contact-panel{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--bg-panel);
+    padding:32px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:24px;
+  }
+  .contact-panel h3{font-size:1.15rem; margin-bottom:8px;}
+  .contact-panel p{font-size:0.88rem; color:var(--text-2); max-width:46ch;}
+  .contact-actions{display:flex; flex-direction:column; gap:10px;}
+  .btn{
+    font-family:var(--mono);
+    font-size:0.82rem;
+    padding:11px 18px;
+    border-radius:8px;
+    display:flex; align-items:center; gap:10px;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--accent); color:#1a1305; font-weight:600;}
+  .btn-primary:hover{background:#f0b662;}
+  .btn-ghost{border:1px solid var(--line); color:var(--text-1);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  footer{
+    padding:26px 40px 40px;
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--text-3);
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (max-width: 860px){
+    .wrap{grid-template-columns:1fr;}
+    aside{
+      position:relative;
+      height:auto;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+    }
+    main{padding:32px 20px 80px;}
+    .contact-panel{grid-template-columns:1fr; text-align:left;}
+    .t-item{grid-template-columns:1fr; gap:6px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <a class="topnav-brand" href="#top">
+      <span class="dotpx"></span> julio@dev
+    </a>
+    <nav class="topnav-links" id="topnav-links">
+      <a href="#about" class="tn-link" data-n="01"><span class="n">01</span>Sobre mí</a>
+      <a href="#stack" class="tn-link" data-n="02"><span class="n">02</span>Tecnologías</a>
+      <a href="#automation" class="tn-link" data-n="03"><span class="n">03</span>Automatización</a>
+      <a href="#resume" class="tn-link" data-n="04"><span class="n">04</span>Formación</a>
+      <a href="#projects" class="tn-link" data-n="05"><span class="n">05</span>Proyectos</a>
+      <a href="#contact" class="tn-link" data-n="06"><span class="n">06</span>Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+
+  <aside>
+    <div class="avatar-frame">
+      <img src="assets/julio-avatar.gif?v=2" alt="Avatar animado de Julio Enrique Casado Castillo">
+    </div>
+
+    <div class="id-block">
+      <h1>Julio Enrique<br>Casado Castillo</h1>
+      <div class="role">Licenciado en Informática</div>
+    </div>
+
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      disponible para nuevas oportunidades
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">stack.focus</div>
+      <div class="tag-row">
+        <span class="tag">Python</span>
+        <span class="tag">Automatización</span>
+        <span class="tag">Sistemas</span>
+        <span class="tag">IA</span>
+        <span class="tag">Seguridad</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">contact.info</div>
+      <ul class="contact-list">
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 4 8 9 8-9"/></svg></span>
+          <span>
+            <span class="meta-k">email</span>
+            <a href="mailto:enriquecasado25@gmail.com">enriquecasado25@gmail.com</a>
+          </span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span>
+            <span class="meta-k">ubicación</span>
+            Santo Domingo Este, RD
+          </span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></span>
+          <span>
+            <span class="meta-k">github</span>
+            <a href="https://github.com/JulioPyHTML" target="_blank" rel="noopener">JulioPyHTML</a>
+          </span>
+        </li>
+        <li>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+          <span>
+            <span class="meta-k">linkedin</span>
+            <a href="https://www.linkedin.com/in/julio-casado-castillo" target="_blank" rel="noopener">julio-casado-castillo</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <main>
+    <div class="path">~/julio-casado <span>main</span></div>
+
+    <div class="hero-term">
+      <div class="term-bar">
+        <span class="term-dot" style="background:#ff5f57"></span>
+        <span class="term-dot" style="background:#febc2e"></span>
+        <span class="term-dot" style="background:#28c840"></span>
+        <span class="path-title">bash — julio@portfolio</span>
+      </div>
+      <div class="term-body">
+        <div class="term-line"><span class="prompt">julio@dev</span> ~ % whoami</div>
+        <div class="term-output" id="typewriter"><span id="tw-text"></span><span class="cursor"></span></div>
+        <div class="term-sub">Licenciado en Informática enfocado en construir soluciones que le quitan trabajo repetitivo a las personas — con Python, RPA y una IA aplicada a procesos reales.</div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="cmd-eyebrow">cat about.md<span class="divider"></span></div>
+      <h2 class="section-title">Sobre mí</h2>
+      <p class="prose">Me interesa usar la tecnología para automatizar procesos repetitivos y mejorar la eficiencia de equipos y personas. Trabajo principalmente con Python, macros de Excel y herramientas de RPA para convertir tareas manuales en flujos automáticos, confiables y fáciles de mantener.</p>
+      <p class="prose">Actualmente estoy ampliando ese enfoque hacia la inteligencia artificial aplicada: desde fundamentos de IA en Microsoft Azure hasta la generación y optimización de prompts para procesos empresariales.</p>
+
+      <div class="focus-grid">
+        <div class="focus-card">
+          <div class="k">Soporte &amp; Sistemas</div>
+          <p>Administración, mantenimiento y soporte técnico sobre entornos Windows y de virtualización.</p>
+        </div>
+        <div class="focus-card">
+          <div class="k">Desarrollo Python</div>
+          <p>Scripts y herramientas para procesar archivos, automatizar tareas y conectar procesos.</p>
+        </div>
+        <div class="focus-card">
+          <div class="k">IA aplicada</div>
+          <p>Fundamentos de Azure AI, prompts y automatización de procesos con inteligencia artificial.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="cmd-eyebrow">ls -la skills/<span class="divider"></span></div>
+      <h2 class="section-title">Tecnologías &amp; herramientas</h2>
+
+      <div class="badge-group">
+        <h4>Desarrollo &amp; automatización</h4>
+        <div class="badge-cloud">
+          <span class="badge">Python</span>
+          <span class="badge">Excel VBA</span>
+          <span class="badge">RPA / Automation</span>
+          <span class="badge">Visual Studio Code</span>
+        </div>
+      </div>
+
+      <div class="badge-group">
+        <h4>Sistemas</h4>
+        <div class="badge-cloud">
+          <span class="badge">Windows 10</span>
+          <span class="badge">Windows 11</span>
+        </div>
+      </div>
+
+      <div class="badge-group">
+        <h4>Virtualización</h4>
+        <div class="badge-cloud">
+          <span class="badge">VirtualBox</span>
+          <span class="badge">VMware</span>
+        </div>
+      </div>
+
+      <div class="badge-group">
+        <h4>Productividad</h4>
+        <div class="badge-cloud">
+          <span class="badge">Microsoft Office</span>
+          <span class="badge">Google Workspace</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="automation">
+      <div class="cmd-eyebrow">./automation-map.sh<span class="divider"></span></div>
+      <h2 class="section-title">Automatización</h2>
+      <p class="prose">Áreas donde vengo aplicando automatización de procesos, hoy y en lo que sigo aprendiendo:</p>
+
+      <div class="pipeline">
+        <div class="pipe-card">
+          <div class="head"><span class="dot"></span>Python</div>
+          <ul>
+            <li>Automatización de tareas</li>
+            <li>Scripts</li>
+            <li>Procesamiento de archivos</li>
+            <li>Herramientas ejecutables</li>
+          </ul>
+        </div>
+        <div class="pipe-card">
+          <div class="head"><span class="dot"></span>Excel</div>
+          <ul>
+            <li>Macros</li>
+            <li>Automatización</li>
+            <li>Cálculos</li>
+            <li>Gestión de información</li>
+          </ul>
+        </div>
+        <div class="pipe-card">
+          <div class="head"><span class="dot"></span>RPA</div>
+          <ul>
+            <li>Automatización de procesos</li>
+            <li>Reducción de tareas manuales</li>
+            <li>Optimización de flujos de trabajo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="cmd-eyebrow">cat education.log<span class="divider"></span></div>
+      <h2 class="section-title">Formación</h2>
+
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-when">Grado</div>
+          <div class="t-what">
+            <h4>Licenciatura en Informática</h4>
+            <div class="org">Formación orientada al desarrollo de soluciones tecnológicas</div>
+            <p>Programación, sistemas de información, gestión tecnológica y fundamentos de desarrollo de software.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-list">
+        <div class="cert-row"><span class="chk">[✓]</span><span><strong>Microsoft Azure AI Fundamentals — AI-900</strong> · certificación</span></div>
+        <div class="cert-row"><span class="chk">[✓]</span><span><strong>Formación en Inteligencia Artificial</strong> · fundamentos aplicados</span></div>
+        <div class="cert-row"><span class="chk">[✓]</span><span><strong>Generación y optimización de prompts</strong></span></div>
+        <div class="cert-row"><span class="chk">[✓]</span><span><strong>Automatización de procesos</strong></span></div>
+        <div class="cert-row"><span class="chk">[✓]</span><span><strong>Python</strong> · tecnologías y herramientas informáticas</span></div>
+      </div>
+
+      <div class="cmd-eyebrow" style="margin-top:40px">cat career-goals.txt<span class="divider"></span></div>
+      <h2 class="section-title">Perfil profesional buscado</h2>
+      <div class="goal-grid">
+        <div class="goal-item"><strong>Soporte y sistemas</strong>Administración y soporte tecnológico</div>
+        <div class="goal-item"><strong>Desarrollo Python</strong>Scripts y herramientas</div>
+        <div class="goal-item"><strong>Automatización</strong>Procesos empresariales</div>
+        <div class="goal-item"><strong>Inteligencia Artificial</strong>IA aplicada a procesos</div>
+        <div class="goal-item"><strong>Seguridad de la información</strong>Buenas prácticas y protección</div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="cmd-eyebrow">ls projects/ --status=building<span class="divider"></span></div>
+      <h2 class="section-title">Proyectos</h2>
+      <div class="empty-state">
+        <div class="glyph">[ directorio vacío — próxima actualización ]</div>
+        <h4>Esta sección está en construcción</h4>
+        <p>Pronto se listarán aquí repositorios y proyectos de Python, automatización e IA directamente desde GitHub.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="cmd-eyebrow">./contact.sh<span class="divider"></span></div>
+      <div class="contact-panel">
+        <div>
+          <h3>¿Hablamos?</h3>
+          <p>Abierto a oportunidades en soporte técnico, desarrollo Python, automatización de procesos e IA aplicada.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:enriquecasado25@gmail.com">Enviar email</a>
+          <a class="btn btn-ghost" href="https://github.com/JulioPyHTML" target="_blank" rel="noopener">Ver GitHub</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/julio-casado-castillo" target="_blank" rel="noopener">Ver LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <span>© 2026 Julio Enrique Casado Castillo</span>
+  <span>Santo Domingo Este, República Dominicana</span>
+</footer>
+
+<script>
+  const phrases = [
+    "Julio Casado",
+    "automatizando procesos con Python",
+    "aplicando IA a flujos reales",
+    "optimizando trabajo manual"
+  ];
+  const el = document.getElementById('tw-text');
+  let pIndex = 0, cIndex = 0, deleting = false;
+
+  function tick(){
+    const current = phrases[pIndex];
+    if(!deleting){
+      cIndex++;
+      el.textContent = current.slice(0, cIndex);
+      if(cIndex === current.length){
+        deleting = true;
+        setTimeout(tick, 1600);
+        return;
+      }
+    } else {
+      cIndex--;
+      el.textContent = current.slice(0, cIndex);
+      if(cIndex === 0){
+        deleting = false;
+        pIndex = (pIndex + 1) % phrases.length;
+      }
+    }
+    setTimeout(tick, deleting ? 35 : 65);
+  }
+  tick();
+
+  // Scroll-spy: resalta el link de la nav bar según la sección visible
+  const sections = document.querySelectorAll('main section[id]');
+  const links = document.querySelectorAll('.tn-link');
+  const linkFor = id => document.querySelector('.tn-link[href="#' + id + '"]');
+
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = linkFor(entry.target.id);
+      if(!link) return;
+      if(entry.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: `-${57 + 24}px 0px -60% 0px`, threshold: 0 });
+
+  sections.forEach(s => spy.observe(s));
+</script>
+
+</body>
+</html>
