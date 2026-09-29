@@ -562,7 +562,7 @@
     </div>
 
     <div class="sidebar-section">
-      <div class="sidebar-label">stack.focus</div>
+      <div class="sidebar-label">stack focus</div>
       <div class="tag-row">
         <span class="tag">Python</span>
         <span class="tag">Automatización</span>
@@ -573,7 +573,7 @@
     </div>
 
     <div class="sidebar-section">
-      <div class="sidebar-label">contact.info</div>
+      <div class="sidebar-label">contact info</div>
       <ul class="contact-list">
         <li>
           <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 4 8 9 8-9"/></svg></span>
@@ -609,27 +609,28 @@
   </aside>
 
   <main>
-    <div class="path">~/julio-casado <span>main</span></div>
+    <div class="path"><span> </span></div>
 
     <div class="hero-term">
       <div class="term-bar">
         <span class="term-dot" style="background:#ff5f57"></span>
         <span class="term-dot" style="background:#febc2e"></span>
         <span class="term-dot" style="background:#28c840"></span>
-        <span class="path-title">bash — julio@portfolio</span>
+        <span class="path-title"></span>
       </div>
       <div class="term-body">
-        <div class="term-line"><span class="prompt">julio@dev</span> ~ % whoami</div>
+        <div class="term-line"><span class="prompt"></span></div>
         <div class="term-output" id="typewriter"><span id="tw-text"></span><span class="cursor"></span></div>
-        <div class="term-sub">Licenciado en Informática enfocado en construir soluciones que le quitan trabajo repetitivo a las personas — con Python, RPA y una IA aplicada a procesos reales.</div>
+        <div class="term-sub">Enfocado en construir soluciones con Inteligencia Artificial que eliminan tareas repetitivas y optimizan y procesos.</div>
       </div>
     </div>
 
     <section id="about">
-      <div class="cmd-eyebrow">cat about.md<span class="divider"></span></div>
+      <div class="cmd-eyebrow">About<span class="divider"></span></div>
       <h2 class="section-title">Sobre mí</h2>
-      <p class="prose">Me interesa usar la tecnología para automatizar procesos repetitivos y mejorar la eficiencia de equipos y personas. Trabajo principalmente con Python, macros de Excel y herramientas de RPA para convertir tareas manuales en flujos automáticos, confiables y fáciles de mantener.</p>
-      <p class="prose">Actualmente estoy ampliando ese enfoque hacia la inteligencia artificial aplicada: desde fundamentos de IA en Microsoft Azure hasta la generación y optimización de prompts para procesos empresariales.</p>
+      <p class="prose"></p>
+      <p class="prose">Me interesa transformar tareas repetitivas en procesos automáticos, confiables y fáciles de mantener. Busco mejorar la eficiencia de equipos de trabajo. Actualmente amplío este enfoque hacia la inteligencia artificial aplicada, optimizando flujos y apoyando la toma de decisiones en entornos requeridos.
+</p>
 
       <div class="focus-grid">
         <div class="focus-card">
@@ -648,7 +649,7 @@
     </section>
 
     <section id="stack">
-      <div class="cmd-eyebrow">ls -la skills/<span class="divider"></span></div>
+      <div class="cmd-eyebrow">HABILIDADES<span class="divider"></span></div>
       <h2 class="section-title">Tecnologías &amp; herramientas</h2>
 
       <div class="badge-group">
@@ -656,16 +657,15 @@
         <div class="badge-cloud">
           <span class="badge">Python</span>
           <span class="badge">Excel VBA</span>
-          <span class="badge">RPA / Automation</span>
-          <span class="badge">Visual Studio Code</span>
+          <span class="badge">Automatizacion</span>
+          <span class="badge">VS Code</span>
         </div>
       </div>
 
       <div class="badge-group">
         <h4>Sistemas</h4>
         <div class="badge-cloud">
-          <span class="badge">Windows 10</span>
-          <span class="badge">Windows 11</span>
+          <span class="badge">Windows & ENTRE OTROS</span>
         </div>
       </div>
 
@@ -680,15 +680,15 @@
       <div class="badge-group">
         <h4>Productividad</h4>
         <div class="badge-cloud">
-          <span class="badge">Microsoft Office</span>
-          <span class="badge">Google Workspace</span>
+          <span class="badge">Microsoft Productivity</span>
+          <span class="badge">Notion</span>
         </div>
       </div>
     </section>
 
     <section id="automation">
-      <div class="cmd-eyebrow">./automation-map.sh<span class="divider"></span></div>
-      <h2 class="section-title">Automatización</h2>
+      <div class="cmd-eyebrow">Automatización<span class="divider"></span></div>
+      <h2 class="section-title">SUS APLICADORES</h2>
       <p class="prose">Áreas donde vengo aplicando automatización de procesos, hoy y en lo que sigo aprendiendo:</p>
 
       <div class="pipeline">
@@ -722,7 +722,7 @@
     </section>
 
     <section id="resume">
-      <div class="cmd-eyebrow">cat education.log<span class="divider"></span></div>
+      <div class="cmd-eyebrow">EDUCACION<span class="divider"></span></div>
       <h2 class="section-title">Formación</h2>
 
       <div class="timeline">
@@ -740,15 +740,15 @@
         <div class="cert-row"><span class="chk">[✓]</span><span><strong>Microsoft Azure AI Fundamentals — AI-900</strong> · certificación</span></div>
         <div class="cert-row"><span class="chk">[✓]</span><span><strong>Formación en Inteligencia Artificial</strong> · fundamentos aplicados</span></div>
         <div class="cert-row"><span class="chk">[✓]</span><span><strong>Generación y optimización de prompts</strong></span></div>
-        <div class="cert-row"><span class="chk">[✓]</span><span><strong>Automatización de procesos</strong></span></div>
+        <div class="cert-row"><span class="chk">[✓]</span><span><strong>Automatización de procesos</strong> · Fundamentos Aplicados </span></div>
         <div class="cert-row"><span class="chk">[✓]</span><span><strong>Python</strong> · tecnologías y herramientas informáticas</span></div>
       </div>
 
-      <div class="cmd-eyebrow" style="margin-top:40px">cat career-goals.txt<span class="divider"></span></div>
+      <div class="cmd-eyebrow" style="margin-top:40px">OBJETIVOS<span class="divider"></span></div>
       <h2 class="section-title">Perfil profesional buscado</h2>
       <div class="goal-grid">
         <div class="goal-item"><strong>Soporte y sistemas</strong>Administración y soporte tecnológico</div>
-        <div class="goal-item"><strong>Desarrollo Python</strong>Scripts y herramientas</div>
+        <div class="goal-item"><strong>artifacts</strong>Scripts y herramientas</div>
         <div class="goal-item"><strong>Automatización</strong>Procesos empresariales</div>
         <div class="goal-item"><strong>Inteligencia Artificial</strong>IA aplicada a procesos</div>
         <div class="goal-item"><strong>Seguridad de la información</strong>Buenas prácticas y protección</div>
@@ -756,26 +756,28 @@
     </section>
 
     <section id="projects">
-      <div class="cmd-eyebrow">ls projects/ --status=building<span class="divider"></span></div>
+      <div class="cmd-eyebrow">EN CONSTRUCCION<span class="divider"></span></div>
       <h2 class="section-title">Proyectos</h2>
       <div class="empty-state">
         <div class="glyph">[ directorio vacío — próxima actualización ]</div>
         <h4>Esta sección está en construcción</h4>
-        <p>Pronto se listarán aquí repositorios y proyectos de Python, automatización e IA directamente desde GitHub.</p>
+        <p>Pronto se listarán aquí proyectos desde GitHub.</p>
       </div>
     </section>
 
     <section id="contact">
-      <div class="cmd-eyebrow">./contact.sh<span class="divider"></span></div>
+      <div class="cmd-eyebrow">CONTACTAME<span class="divider"></span></div>
       <div class="contact-panel">
         <div>
           <h3>¿Hablamos?</h3>
-          <p>Abierto a oportunidades en soporte técnico, desarrollo Python, automatización de procesos e IA aplicada.</p>
+          <p>Abierto a oportunidades</p>
         </div>
         <div class="contact-actions">
           <a class="btn btn-primary" href="mailto:enriquecasado25@gmail.com">Enviar email</a>
           <a class="btn btn-ghost" href="https://github.com/JulioPyHTML" target="_blank" rel="noopener">Ver GitHub</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/julio-casado-castillo" target="_blank" rel="noopener">Ver LinkedIn</a>
+          <a class="btn btn-ghost" href="www.linkedin.com/in/julio-casado-castillo
+
+" target="_blank" rel="noopener">Ver LinkedIn</a>
         </div>
       </div>
     </section>
@@ -790,7 +792,7 @@
 <script>
   const phrases = [
     "Julio Casado",
-    "automatizando procesos con Python",
+    "automatizando procesos",
     "aplicando IA a flujos reales",
     "optimizando trabajo manual"
   ];
