@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12161d">
+  <meta name="description" content="Portfolio profesional de Julio Enrique Casado Castillo, Licenciado en Informática. Soporte TI, sistemas Windows, Python, Excel y automatización de procesos.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Julio Casado | Soporte TI y Automatización">
+  <meta property="og:description" content="Perfil profesional en soporte técnico, sistemas Windows y automatización con Python y Excel.">
+  <title>Julio Casado | Soporte TI · Python · Automatización</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #12161d;
+      --panel: #1a1f29;
+      --panel-2: #212836;
+      --panel-3: #242c3b;
+      --accent: #e8a94a;
+      --accent-soft: rgba(232,169,74,.12);
+      --success: #7fd99a;
+      --text: #eceef2;
+      --muted: #a5adbf;
+      --subtle: #70798f;
+      --line: #2d3545;
+      --radius: 12px;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+      --sans: "Manrope", system-ui, sans-serif;
+      --nav-h: 60px;
+      --max: 1240px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 22px); }
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--bg);
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.035) 1px, transparent 0);
+      background-size: 28px 28px;
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 5px; }
+    ::selection { background: var(--accent); color: #1a1305; }
+
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      min-height: var(--nav-h);
+      border-bottom: 1px solid var(--line);
+      background: rgba(18,22,29,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .topnav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      max-width: var(--max);
+      min-height: var(--nav-h);
+      margin: 0 auto;
+      padding: 8px 36px;
+    }
+    .brand {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 9px;
+      font: 600 .82rem var(--mono);
+      letter-spacing: -.02em;
+    }
+    .brand-dot, .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(127,217,154,.1);
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      color: var(--muted);
+      font: 500 .74rem var(--mono);
+      white-space: nowrap;
+      transition: .2s ease;
+    }
+    .nav-link .num { color: var(--subtle); font-size: .68rem; }
+    .nav-link:hover, .nav-link.active {
+      border-color: var(--line);
+      background: var(--panel);
+      color: var(--accent);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      max-width: var(--max);
+      min-height: calc(100vh - var(--nav-h));
+      margin: 0 auto;
+    }
+    .sidebar {
+      position: sticky;
+      top: var(--nav-h);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 25px;
+      height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      padding: 38px 28px;
+      border-right: 1px solid var(--line);
+    }
+    .avatar {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 118px;
+      height: 118px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel-2);
+      box-shadow: 0 0 0 4px var(--panel), 0 14px 32px -12px rgba(0,0,0,.7);
+    }
+    .avatar::before {
+      position: absolute;
+      color: var(--accent);
+      content: "JC";
+      font: 700 2rem var(--mono);
+      opacity: .8;
+    }
+    .avatar img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: cover; }
+    .identity h1 { margin: 0; font-size: 1.42rem; font-weight: 800; letter-spacing: -.035em; line-height: 1.25; }
+    .identity .role { margin-top: 8px; color: var(--accent); font: 500 .77rem var(--mono); }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      background: var(--panel);
+      color: var(--muted);
+      font: 500 .66rem var(--mono);
+    }
+    .status-dot { width: 7px; height: 7px; box-shadow: none; }
+    .side-block { width: 100%; padding-top: 20px; border-top: 1px solid var(--line); }
+    .side-label { margin-bottom: 11px; color: var(--subtle); font: 600 .65rem var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--muted);
+      font: 400 .65rem var(--mono);
+    }
+    .contact-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .contact-item { display: flex; align-items: flex-start; gap: 10px; min-width: 0; color: var(--muted); font-size: .78rem; overflow-wrap: anywhere; }
+    .contact-icon {
+      display: grid;
+      flex: 0 0 28px;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel);
+      color: var(--accent);
+    }
+    .contact-icon svg { width: 14px; height: 14px; }
+    .contact-meta { display: block; color: var(--subtle); font: 400 .64rem var(--mono); }
+    .contact-item a:hover { color: var(--accent); }
+
+    main { min-width: 0; padding: 38px 40px 90px; }
+    .breadcrumb { margin-bottom: 25px; color: var(--subtle); font: 400 .69rem var(--mono); }
+    .breadcrumb span { color: var(--accent); }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 52px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(36,44,59,.95), rgba(26,31,41,.98) 60%);
+    }
+    .hero::after {
+      position: absolute;
+      top: -100px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      border: 1px solid rgba(232,169,74,.12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 26px rgba(232,169,74,.025), 0 0 0 55px rgba(232,169,74,.02);
+      content: "";
+      pointer-events: none;
+    }
+    .terminal-bar { display: flex; align-items: center; gap: 8px; padding: 11px 15px; border-bottom: 1px solid var(--line); background: rgba(18,22,29,.28); }
+    .terminal-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .terminal-name { margin-left: 8px; color: var(--subtle); font: 400 .68rem var(--mono); }
+    .hero-content { position: relative; z-index: 1; padding: 29px 30px 31px; }
+    .prompt { color: var(--success); font: 600 .84rem var(--mono); }
+    .hero h2 { max-width: 760px; min-height: 2.7em; margin: 17px 0 10px; font-size: clamp(1.7rem, 3vw, 2.45rem); font-weight: 800; letter-spacing: -.045em; line-height: 1.18; }
+    .hero h2 .accent { color: var(--accent); }
+    .cursor { display: inline-block; width: 3px; height: .95em; margin-left: 4px; transform: translateY(2px); background: var(--accent); animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero-copy { max-width: 67ch; margin: 0; color: var(--muted); font-size: .93rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 23px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font: 600 .72rem var(--mono);
+      transition: .2s ease;
+    }
+    .button-primary { border-color: var(--accent); background: var(--accent); color: #1b1408; }
+    .button-primary:hover { background: #f0b662; color: #1b1408; }
+    .button-secondary { background: rgba(18,22,29,.25); color: var(--text); }
+    .button-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    section { margin-bottom: 54px; scroll-margin-top: calc(var(--nav-h) + 22px); }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; color: var(--accent); font: 600 .88rem var(--mono); }
+    .eyebrow::before { color: var(--subtle); content: "$"; font-weight: 400; }
+    .eyebrow .rule { flex: 1; height: 1px; background: var(--line); }
+    .section-title { margin: 0 0 13px; font-size: 1.18rem; font-weight: 800; letter-spacing: -.025em; }
+    .lead { max-width: 72ch; margin: 0; color: var(--muted); font-size: .9rem; }
+    .lead + .lead { margin-top: 10px; }
+
+    .quick-grid, .experience-grid, .project-grid, .role-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 20px; }
+    .info-card, .experience-card, .project-card, .role-card {
+      min-width: 0;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+    .card-kicker { color: var(--accent); font: 600 .65rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .info-card h3, .experience-card h3, .project-card h3 { margin: 7px 0 6px; font-size: .92rem; font-weight: 750; }
+    .info-card p, .experience-card p, .project-card p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .experience-card ul { display: grid; gap: 7px; margin: 12px 0 0; padding: 0; list-style: none; }
+    .experience-card li { position: relative; padding-left: 16px; color: var(--muted); font-size: .78rem; }
+    .experience-card li::before { position: absolute; left: 0; color: var(--accent); content: "›"; font-family: var(--mono); }
+
+    .skill-group { margin-top: 19px; }
+    .skill-group h3 { margin: 0 0 10px; color: var(--subtle); font: 600 .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .skill-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel);
+      color: var(--text);
+      font-size: .77rem;
+    }
+    .skill::before { width: 6px; height: 6px; border-radius: 2px; background: var(--accent); content: ""; }
+    .skill-note { margin: 9px 0 0; color: var(--subtle); font-size: .74rem; }
+
+    .workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-top: 19px; }
+    .workflow-card { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+    .workflow-card .symbol { color: var(--accent); font: 700 .86rem var(--mono); }
+    .workflow-card h3 { margin: 9px 0 5px; font-size: .88rem; }
+    .workflow-card p { margin: 0; color: var(--muted); font-size: .77rem; }
+
+    .project-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .project-card { display: flex; flex-direction: column; gap: 11px; padding: 18px; }
+    .project-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+    .project-status { padding: 4px 8px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); font: 500 .61rem var(--mono); }
+    .project-status.public { border-color: rgba(127,217,154,.25); color: var(--success); }
+    .project-card h3 { margin: 0; font-size: .96rem; }
+    .project-card p { flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-tags span { padding: 4px 7px; border-radius: 5px; background: var(--panel-2); color: var(--muted); font: 400 .62rem var(--mono); }
+    .project-link { display: inline-flex; align-items: center; gap: 7px; width: fit-content; margin-top: 2px; color: var(--accent); font: 600 .7rem var(--mono); }
+    .project-link:hover { color: #ffd18c; }
+    .project-disclaimer { margin-top: 12px; color: var(--subtle); font-size: .73rem; }
+
+    .education-item { display: grid; grid-template-columns: 105px minmax(0,1fr); gap: 17px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .education-item:first-child { padding-top: 0; }
+    .education-date { color: var(--subtle); font: 500 .7rem var(--mono); }
+    .education-item h3 { margin: 0; font-size: .9rem; }
+    .education-item p { margin: 5px 0 0; color: var(--muted); font-size: .78rem; }
+    .learning-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; margin-top: 18px; }
+    .learning-item { padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--muted); font-size: .77rem; }
+    .learning-item strong { display: block; margin-bottom: 3px; color: var(--text); font-size: .79rem; }
+    .role-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .role-card { padding: 13px 14px; color: var(--muted); font-size: .76rem; }
+    .role-card strong { display: block; margin-bottom: 3px; color: var(--text); font-size: .8rem; }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      align-items: center;
+      gap: 22px;
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(120deg, var(--panel-2), var(--panel));
+    }
+    .contact-panel h2 { margin: 0 0 7px; font-size: 1.15rem; }
+    .contact-panel p { max-width: 52ch; margin: 0; color: var(--muted); font-size: .82rem; }
+    .contact-actions { display: flex; flex-direction: column; gap: 8px; }
+    footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 23px max(20px, calc((100vw - var(--max))/2 + 40px)) 32px; border-top: 1px solid var(--line); color: var(--subtle); font: 400 .65rem var(--mono); }
+
+    @media (max-width: 1000px) {
+      .topnav-inner { padding-right: 20px; padding-left: 20px; }
+      .brand { display: none; }
+      .nav-links { width: 100%; }
+      .layout { grid-template-columns: 265px minmax(0,1fr); }
+      .sidebar { padding: 32px 21px; }
+      main { padding-right: 28px; padding-left: 28px; }
+      .workflow-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: auto; height: auto; overflow: visible; padding: 28px 22px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .avatar { width: 96px; height: 96px; }
+      .quick-grid, .experience-grid, .project-grid { grid-template-columns: 1fr 1fr; }
+      main { padding: 30px 21px 65px; }
+      .contact-panel { grid-template-columns: 1fr; }
+      .contact-actions { flex-direction: row; flex-wrap: wrap; }
+      .role-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding-right: 21px; padding-left: 21px; }
+    }
+    @media (max-width: 520px) {
+      .nav-link { padding: 8px 9px; font-size: .68rem; }
+      .nav-link .num { display: none; }
+      .hero-content { padding: 23px 19px 25px; }
+      .quick-grid, .experience-grid, .project-grid, .learning-list, .role-grid { grid-template-columns: 1fr; }
+      .education-item { grid-template-columns: 1fr; gap: 5px; }
+      .hero-actions .button { flex: 1 1 100%; }
+      .contact-actions { flex-direction: column; align-items: stretch; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topnav">
+    <div class="topnav-inner">
+      <a class="brand" href="#inicio"><span class="brand-dot" aria-hidden="true"></span> julio@dev</a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a class="nav-link" href="#perfil"><span class="num">01</span>Perfil</a>
+        <a class="nav-link" href="#experiencia"><span class="num">02</span>Experiencia</a>
+        <a class="nav-link" href="#habilidades"><span class="num">03</span>Habilidades</a>
+        <a class="nav-link" href="#proyectos"><span class="num">04</span>Proyectos</a>
+        <a class="nav-link" href="#formacion"><span class="num">05</span>Formación</a>
+        <a class="nav-link" href="#contacto"><span class="num">06</span>Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="inicio">
+    <aside class="sidebar" aria-label="Información profesional y contacto">
+      <div class="avatar"><img src="assets/img/julio.jpg" alt="Fotografía de Julio Casado" width="118" height="118" onerror="this.remove()"></div>
+      <div class="identity">
+        <h1>Julio Enrique<br>Casado Castillo</h1>
+        <div class="role">Licenciado en Informática</div>
+      </div>
+      <div class="status"><span class="status-dot" aria-hidden="true"></span>Abierto a oportunidades IT</div>
+
+      <div class="side-block">
+        <div class="side-label">Áreas principales</div>
+        <div class="tag-list">
+          <span class="tag">Soporte TI</span>
+          <span class="tag">Python</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Windows</span>
+          <span class="tag">Automatización</span>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <div class="side-label">Contacto directo</div>
+        <ul class="contact-list">
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span><span class="contact-meta">EMAIL</span><a href="mailto:enriquecasado25@gmail.com">enriquecasado25@gmail.com</a></span>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span><span class="contact-meta">UBICACIÓN</span>Santo Domingo Este, RD</span>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></span>
+            <span><span class="contact-meta">GITHUB</span><a href="https://github.com/JulioPyHTML" target="_blank" rel="noopener noreferrer">github.com/JulioPyHTML</a></span>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+            <span><span class="contact-meta">LINKEDIN</span><a href="https://www.linkedin.com/in/julio-casado-castillo" target="_blank" rel="noopener noreferrer">julio-casado-castillo</a></span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main>
+      <div class="breadcrumb">~/julio-casado / <span>perfil-profesional</span></div>
+
+      <section class="hero" id="perfil" aria-labelledby="hero-title">
+        <div class="terminal-bar" aria-hidden="true">
+          <span class="terminal-dot" style="background:#ff5f57"></span>
+          <span class="terminal-dot" style="background:#febc2e"></span>
+          <span class="terminal-dot" style="background:#28c840"></span>
+          <span class="terminal-name">bash — julio@portfolio</span>
+        </div>
+        <div class="hero-content">
+          <div class="prompt">julio@dev ~ % perfil --resumen</div>
+          <h2 id="hero-title"><span id="tw-text">Soporte TI y automatización</span><span class="cursor" aria-hidden="true"></span></h2>
+          <p class="hero-copy">Licenciado en Informática con enfoque práctico en soporte técnico, sistemas Windows y automatización de tareas con Python y Excel. Me interesa resolver incidencias, simplificar procesos y crear herramientas útiles para el trabajo diario.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:enriquecasado25@gmail.com?subject=Oportunidad%20laboral%20-%20Julio%20Casado">Contactar por email <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://github.com/JulioPyHTML" target="_blank" rel="noopener noreferrer">Ver GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/julio-casado-castillo" target="_blank" rel="noopener noreferrer">Ver LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="summary-title">
+        <div class="eyebrow">valor-aportado<span class="rule"></span></div>
+        <h2 class="section-title" id="summary-title">En qué puedo contribuir</h2>
+        <p class="lead">Combino una base de informática con experiencia práctica en resolución de problemas técnicos y un interés claro por la mejora de procesos.</p>
+        <div class="quick-grid">
+          <article class="info-card"><div class="card-kicker">01 / Soporte</div><h3>Resolver incidencias TI</h3><p>Diagnóstico de equipos, configuración de Windows, instalación de controladores y mantenimiento básico de hardware y software.</p></article>
+          <article class="info-card"><div class="card-kicker">02 / Automatización</div><h3>Reducir tareas manuales</h3><p>Uso de Python y Excel para estructurar información, agilizar operaciones y apoyar procesos repetitivos.</p></article>
+          <article class="info-card"><div class="card-kicker">03 / Sistemas</div><h3>Apoyar la operación tecnológica</h3><p>Configuración básica de redes, conectividad, direccionamiento IP y herramientas de diagnóstico.</p></article>
+          <article class="info-card"><div class="card-kicker">04 / Aprendizaje</div><h3>Incorporar nuevas herramientas</h3><p>Formación continua en inteligencia artificial aplicada, seguridad de la información y optimización de flujos.</p></article>
+        </div>
+      </section>
+
+      <section id="experiencia" aria-labelledby="experience-title">
+        <div class="eyebrow">experiencia-práctica<span class="rule"></span></div>
+        <h2 class="section-title" id="experience-title">Experiencia técnica aplicada</h2>
+        <p class="lead">Ámbitos en los que he desarrollado práctica técnica y capacidad de resolución, combinando soporte, configuración de sistemas y mejora de procesos.</p>
+        <div class="experience-grid">
+          <article class="experience-card">
+            <div class="card-kicker">Soporte técnico</div>
+            <h3>Diagnóstico y mantenimiento de equipos</h3>
+            <p>Atención de incidencias de hardware y software en computadoras personales y portátiles.</p>
+            <ul>
+              <li>Instalación y configuración de Windows.</li>
+              <li>Revisión de almacenamiento, batería y componentes.</li>
+              <li>Localización de controladores y solución de problemas de dispositivos.</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <div class="card-kicker">Sistemas y redes</div>
+            <h3>Configuración y conectividad</h3>
+            <p>Soporte básico a entornos Windows y dispositivos conectados en redes locales.</p>
+            <ul>
+              <li>Configuración de IP dinámica y estática.</li>
+              <li>Uso de herramientas de exploración y diagnóstico de red.</li>
+              <li>Apoyo en conectividad de DVR y cámaras cableadas.</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <div class="card-kicker">Automatización operativa</div>
+            <h3>Python y hojas de cálculo</h3>
+            <p>Orientación a convertir procesos manuales en tareas más ordenadas y repetibles.</p>
+            <ul>
+              <li>Scripts para tareas y procesamiento de archivos.</li>
+              <li>Macros, fórmulas y automatización en Excel.</li>
+              <li>Diseño de flujos para reducir errores manuales.</li>
+            </ul>
+          </article>
+          <article class="experience-card">
+            <div class="card-kicker">Buenas prácticas</div>
+            <h3>Organización y documentación</h3>
+            <p>Enfoque estructurado para facilitar el diagnóstico y la continuidad del soporte.</p>
+            <ul>
+              <li>Organización de utilidades, controladores y manuales.</li>
+              <li>Registro de hallazgos y recomendaciones técnicas.</li>
+              <li>Atención a la confiabilidad y seguridad básica de los equipos.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="habilidades" aria-labelledby="skills-title">
+        <div class="eyebrow">stack-tecnológico<span class="rule"></span></div>
+        <h2 class="section-title" id="skills-title">Habilidades y herramientas</h2>
+        <p class="lead">Tecnologías agrupadas por su uso para que un equipo de selección pueda identificar rápidamente las áreas relevantes.</p>
+
+        <div class="skill-group">
+          <h3>Programación y automatización</h3>
+          <div class="skill-cloud">
+            <span class="skill">Python</span><span class="skill">Excel VBA / Macros</span><span class="skill">Automatización de tareas</span><span class="skill">Procesamiento de archivos</span><span class="skill">HTML5</span><span class="skill">CSS</span><span class="skill">JavaScript básico</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Soporte, sistemas y redes</h3>
+          <div class="skill-cloud">
+            <span class="skill">Windows 10 / 11</span><span class="skill">Instalación de drivers</span><span class="skill">Diagnóstico de hardware</span><span class="skill">TCP/IP</span><span class="skill">DHCP</span><span class="skill">IP estática</span><span class="skill">DVR / cámaras cableadas</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Entornos y productividad</h3>
+          <div class="skill-cloud">
+            <span class="skill">VirtualBox</span><span class="skill">VMware</span><span class="skill">Visual Studio Code</span><span class="skill">Microsoft Office</span><span class="skill">Google Workspace</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Conocimientos en desarrollo</h3>
+          <div class="skill-cloud">
+            <span class="skill">Fundamentos de IA</span><span class="skill">Azure AI — fundamentos</span><span class="skill">Diseño de prompts</span><span class="skill">Seguridad de la información — fundamentos</span>
+          </div>
+          <p class="skill-note">La lista distingue herramientas utilizadas de áreas de formación continua; no implica dominio avanzado de cada tecnología.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="workflow-title">
+        <div class="eyebrow">metodología-de-trabajo<span class="rule"></span></div>
+        <h2 class="section-title" id="workflow-title">Cómo abordo un problema técnico</h2>
+        <div class="workflow-grid">
+          <article class="workflow-card"><div class="symbol">01 //</div><h3>Diagnosticar</h3><p>Identificar síntomas, revisar el entorno y acotar la causa antes de aplicar cambios.</p></article>
+          <article class="workflow-card"><div class="symbol">02 //</div><h3>Resolver y comprobar</h3><p>Aplicar una solución adecuada y verificar que el equipo o proceso funcione correctamente.</p></article>
+          <article class="workflow-card"><div class="symbol">03 //</div><h3>Documentar y mejorar</h3><p>Dejar pasos claros y detectar oportunidades para automatizar tareas repetitivas.</p></article>
+        </div>
+      </section>
+
+      <section id="proyectos" aria-labelledby="projects-title">
+        <div class="eyebrow">repositorios-y-casos<span class="rule"></span></div>
+        <h2 class="section-title" id="projects-title">Proyectos y casos prácticos</h2>
+        <p class="lead">Una muestra de trabajo público y de las soluciones que estoy preparando para documentar mejor mis habilidades técnicas.</p>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-top"><span class="card-kicker">Web / desarrollo</span><span class="project-status public">Repositorio público</span></div>
+            <h3>Portfolio personal</h3>
+            <p>Sitio web profesional creado para presentar perfil, habilidades, formación y proyectos. Incluye diseño adaptable, navegación por secciones y componentes desarrollados con tecnologías web.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub</span></div>
+            <a class="project-link" href="https://github.com/JulioPyHTML/Julio-Casado-DEV" target="_blank" rel="noopener noreferrer">Ver repositorio <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="card-kicker">Automatización / Excel</span><span class="project-status">Prototipo inicial</span></div>
+            <h3>Control de cotizaciones y precios en Excel</h3>
+            <p>Diseño de un libro de trabajo para registrar medidas, calcular áreas y costos, contemplar ITBIS y apoyar la generación de precios de venta.</p>
+            <div class="project-tags"><span>Excel</span><span>VBA</span><span>Fórmulas</span><span>Procesos</span></div>
+            <a class="project-link" href="https://github.com/JulioPyHTML/Julio-Casado-DEV/tree/main/proyectos/losas-valdez" target="_blank" rel="noopener noreferrer">Ver caso y módulo VBA <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="card-kicker">Soporte / redes</span><span class="project-status">Kit inicial</span></div>
+            <h3>Kit de soporte técnico Windows y redes</h3>
+            <p>Organización de utilidades, controladores, herramientas de exploración IP y manuales técnicos para agilizar tareas frecuentes de diagnóstico y conectividad.</p>
+            <div class="project-tags"><span>Windows</span><span>Drivers</span><span>TCP/IP</span><span>DVR</span></div>
+            <a class="project-link" href="https://github.com/JulioPyHTML/Julio-Casado-DEV/tree/main/proyectos/kit-soporte" target="_blank" rel="noopener noreferrer">Ver documentación y script <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <p class="project-disclaimer">Los dos casos prácticos incluyen documentación y archivos iniciales para revisión. Se identifican como prototipos y no como soluciones empresariales terminadas.</p>
+      </section>
+
+      <section id="formacion" aria-labelledby="education-title">
+        <div class="eyebrow">formación-continua<span class="rule"></span></div>
+        <h2 class="section-title" id="education-title">Formación académica y complementaria</h2>
+        <div class="education-item">
+          <div class="education-date">Formación académica</div>
+          <div><h3>Licenciatura en Informática</h3><p>Base académica en programación, sistemas de información, gestión tecnológica y fundamentos de desarrollo de software.</p></div>
+        </div>
+        <div class="learning-list">
+          <div class="learning-item"><strong>Inteligencia artificial</strong>Fundamentos y aplicaciones prácticas.</div>
+          <div class="learning-item"><strong>Microsoft Azure AI</strong>Estudio de fundamentos de IA en Azure (AI-900).</div>
+          <div class="learning-item"><strong>Prompt engineering</strong>Generación y optimización de instrucciones para IA.</div>
+          <div class="learning-item"><strong>Python y automatización</strong>Formación y práctica orientadas a tareas y procesos.</div>
+        </div>
+        <p class="skill-note">Formación continua en fundamentos de inteligencia artificial en Microsoft Azure y estudio de los contenidos de AI-900.</p>
+
+        <div class="eyebrow" style="margin-top:34px">roles-de-interés<span class="rule"></span></div>
+        <h2 class="section-title">Posiciones a las que puedo aportar</h2>
+        <div class="role-grid">
+          <div class="role-card"><strong>Soporte técnico / Help Desk</strong>Atención y resolución de incidencias.</div>
+          <div class="role-card"><strong>Técnico de sistemas</strong>Soporte a Windows, equipos y usuarios.</div>
+          <div class="role-card"><strong>Analista de soporte TI junior</strong>Diagnóstico y seguimiento técnico.</div>
+          <div class="role-card"><strong>Asistente de automatización</strong>Mejora de tareas y flujos operativos.</div>
+          <div class="role-card"><strong>Desarrollador Python junior</strong>Scripts y utilidades internas.</div>
+          <div class="role-card"><strong>Operaciones TI</strong>Apoyo a procesos y herramientas tecnológicas.</div>
+        </div>
+      </section>
+
+      <section id="contacto" aria-labelledby="contact-title">
+        <div class="eyebrow">contacto<span class="rule"></span></div>
+        <div class="contact-panel">
+          <div>
+            <h2 id="contact-title">¿Hablamos de una oportunidad?</h2>
+            <p>Estoy abierto a conversar sobre posiciones de soporte TI, sistemas, automatización y desarrollo Python junior en Santo Domingo o modalidades remotas/híbridas.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:enriquecasado25@gmail.com?subject=Oportunidad%20laboral%20-%20Julio%20Casado">Enviar email ↗</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/julio-casado-castillo" target="_blank" rel="noopener noreferrer">Contactar en LinkedIn ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <span>© <span id="year">2026</span> Julio Enrique Casado Castillo</span>
+    <span>Santo Domingo Este · República Dominicana</span>
+  </footer>
+
+  <script>
+    (() => {
+      const phrases = [
+        "Soporte TI y automatización",
+        "Python para tareas reales",
+        "Sistemas Windows y redes",
+        "Mejora de procesos operativos"
+      ];
+      const text = document.getElementById("tw-text");
+      const year = document.getElementById("year");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (year) year.textContent = String(new Date().getFullYear());
+
+      if (text && !reduceMotion) {
+        let phraseIndex = 0;
+        let charIndex = phrases[0].length;
+        let deleting = true;
+        const tick = () => {
+          const phrase = phrases[phraseIndex];
+          charIndex += deleting ? -1 : 1;
+          text.textContent = phrase.slice(0, charIndex);
+          let delay = deleting ? 32 : 58;
+          if (charIndex <= 0) {
+            deleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            delay = 250;
+          } else if (charIndex >= phrase.length) {
+            deleting = true;
+            delay = 1450;
+          }
+          window.setTimeout(tick, delay);
+        };
+        window.setTimeout(tick, 1700);
+      }
+
+      const navLinks = [...document.querySelectorAll(".nav-link")];
+      const sections = [...document.querySelectorAll("main section[id]")];
+      if ("IntersectionObserver" in window && navLinks.length && sections.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            navLinks.forEach((link) => {
+              const active = link.getAttribute("href") === `#${entry.target.id}`;
+              link.classList.toggle("active", active);
+              if (active) link.setAttribute("aria-current", "location");
+              else link.removeAttribute("aria-current");
+            });
+          });
+        }, { rootMargin: "-82px 0px -62% 0px", threshold: 0 });
+        sections.forEach((section) => observer.observe(section));
+      }
+    })();
+  </script>
+</body>
+</html>
